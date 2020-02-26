@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-areas:
+                'title title'
+                'header header'
+                'main main'
+                'aside aside'
+                'footer footer';
+            background-color: white;
+            border: purple solid;
+            border-width: 5px;
+            font-weight:bold;
+            /* text-align:start; */
+            font-size: 22.5px;
+            grid-gap: 2.5px;
+        }
+
+        .item1 {
+            grid-area: title;
+            background-color: green;
+            padding: 2.5px 0px;
+        }
+
+        .item2 {
+            grid-area: header;
+            background-color: orange;
+        }
+        .item3 {
+            grid-area: main;
+            background-color: antiquewhite;
+        }
+
+        .item4 {
+            grid-area: aside;
+            background-color: red;
+        }
+
+        .item5 {
+            grid-area: footer;
+            background-color: yellow;
+        }
+
+        @media only screen and (max-width: 750px) {
+            .grid-container {
+                grid-template-areas: none;
+            }
+            .boxHeight1 {
+                height: 80px;
+            }
+        }
+
+        @media only screen and (min-width: 750px) {
+            .grid-container {
+                grid-template-areas: 
+                    'title footer'
+                    'main header'
+                    'main header'
+                    'main aside'
+                    'main aside';
+                    font-size: 27px;
+            }
+            .boxHeight2 {
+                height: 110px;
+            }
+            .titleHeight{
+                max-height: 35px;
+            }
+        }
+
+        @media only screen and (min-width: 1000px) {
+            .grid-container {
+                grid-template-areas: 
+                    'title title'
+                    'header header'
+                    'aside main'
+                    'aside main'
+                    'footer footer';
+                    font-size: 20px;
+            }
+            .boxHeight3 {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Devon Layton: P1</h1>
+
+    <div class="grid-container">
+        <div class="item1 item1 item1 item1">Title</div>
+        <div class="item2 boxHeight1 boxHeight2 boxHeight2">Header</div>
+        <div class="item3 boxHeight1 .item3 boxHeight3">Main Content</div>
+        <div class="item4 boxHeight1 boxHeight2 boxHeight3">Aside</div>
+        <div class="item5 boxHeight1 titleHeight boxHeight2">Footer</div>
+    </div>
+</body>
+
+</html>

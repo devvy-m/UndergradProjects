@@ -1,0 +1,45 @@
+<!--Devon Layton
+Project 1-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ 
+div {
+  /* did not define width and height here bacause I set it while importing with img */
+  position:fixed;
+  animation: animate 3s ease-in infinite;
+  animation-direction: reverse;
+  
+}
+
+@keyframes animate {
+
+  0%,100%{
+      margin-left:0%;
+      transform: rotate(0deg);
+  }
+  25%, 75%{
+      margin-left:30%;
+    transform: rotate(30deg);
+
+  }
+  50%{
+      margin-left:60%;
+      transform: rotate(-30deg);
+  }
+}
+
+</style>
+</head>
+<body>
+<h1>
+    <br>
+</h1>
+<div class = "logoContainer">
+    <img src = "laytLogo.png" alt="Personal Logo" class="pic" style ="width: 250px;height: 150px;">
+</div>
+
+</body>
+</html>
