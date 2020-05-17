@@ -1,0 +1,95 @@
+  (Advanced) Web Technologies
+                                  Spring 2020
+                                   Project 3
+
+
+turnin code:  awt_p3
+
+
+This project will use websockets to demonstrate one of two different
+techniques for accomplishing roughly the same task.  We will discuss
+both techniques in class.
+
+The project should perform much like the demo in class, i.e. it should provide:
+    P3            ## as both title and header on the page
+    Query         ## button to display current vote counts for both candidates
+    Cand 1        ## button to perform a vote for cand1 AND display new counts
+    Cand 2        ## button to perform a vote for cand2 AND display new counts
+    outlined-box  ## in which to display current counts for each candidate
+
+The current vote counts should be kept in a file named:
+    votecnts.txt
+in an appropriate place in the project dir that you turnin.
+
+Your main dir should contain a file named:
+    reset_votecnts.sh
+It should reset the votecnts.txt file to 0 for both candidates.
+I will execute it by typing this:
+    sh reset_votecnts.sh
+
+Prior to testing, I will run this command:
+    make
+It should use your makefile to setup any things that you need, e.g. it may need to
+copy a python file to serverP3 (below), or run "chmod +x" on a python script or a
+shell script, or install some required node modules.
+
+
+The top page for the project should be named:
+    p3.html
+which should contain the necessary html.  It should also contain (or link to)
+your css and javascript.
+The javascript should establish websocket connection to a server which
+you have written.  The javascript should request the server to provide
+current values of candidate info in your votecnts.txt file; it can also
+ask the server to update the contents of the file.
+
+The server must be named:
+    serverP3
+It can be written in any language that you choose (e.g. python3.6 or node)
+but it must run on www.cs.mtsu.edu and use content in your project dir.
+Note that if you create a python3 server, it MUST:
+    - be named serverP3  (without the .py extension)
+    - be marked as executable, e.g.:  chmod u+x serverP3
+    - have the correct first line, e.g.:  #!/usr/bin/python3
+
+A module named websockets has been installed for python3.6 on www.
+If you choose node, you will have to run npm to install the websocket
+library of your preference into a node_modules sub-dir.
+
+The project will be graded in this way:
+
+    on www.cs.mtsu.edu start 2 servers:
+        python3 -m http.server --cgi 5994 &
+            ## where 5994 is a port that may change
+            ##   I will choose the port number AT TIME OF TESTING
+        ./serverP3 &
+            ## which can use any of your assigned ports that you wish
+            ## use of this port can be hard-coded in server and client js
+
+    in chrome on another computer, visit:
+        sc http://www.cs.mtsu.edu:5994/p3.html
+
+
+
+-------------------------------------------------------------------------------------
+"RMB23chapter 23 has examples"
+"most webservers run on port 80"
+
+
+1. serve both servers before local host executes in webpage 
+
+
+    Client browser           <------               spin wwww server with py3 -hhtp
+            |
+            |----------------------------------------| websocket connects serverP3 with browser
+                                                        served on designated port i.e 5940
+                                                            |
+                                                            |
+                                                            ^
+                                                            when query selected, update votecnts.txt    
+
+//kill background process (server) kill %1
+                                    kill %2
+
+// completely different side note, if you want to look at database stuff, 
+// look in ../RMBDB

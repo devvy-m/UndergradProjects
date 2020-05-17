@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <title> Devon Layton Project 2</title>
+  <head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+      .grid-container {
+        display: inline-grid;
+        grid-template-columns: auto 20% 50% 20%;
+        grid-template-rows: 75% auto;
+        gap: 2px;
+        border-width: 10px;
+        background-color: black;
+      }
+      .gridItem{
+          background-color: steelblue;
+      }
+      .nav {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        background-color: tomato;
+      }
+      .wide-nav {
+          width: 500px !important;
+      }
+      .heirch {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        background-color: blanchedalmond;
+      }
+      
+    </style>
+    <script>
+        expand = () => {
+            const navItem = document.getElementById('nav1');
+            navItem.className = navItem.className + ' wide-nav';
+        }
+    </script>
+  </head>
+  <div class="grid-container">
+    <div class="nav" id="nav1" onclick="expand()">Navigation</div>
+    <div class="heirch">Hierarchy</div>
+  </div>
+</html>

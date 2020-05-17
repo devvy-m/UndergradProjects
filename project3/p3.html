@@ -1,0 +1,51 @@
+<!-- client side new Websocket("ws://cs.mtsu.edu:5940") -->
+<!-- server side: python- import websocket, in websocket.serve, change localhost and port 
+        add 2-3 lines of code -->
+<!-- if you want to test on local machine, you can keep local host with port 8000 -->
+<!-- if doing in python, don't need to download any packages like you would with node -->
+
+<!-- The project should perform much like the demo in class, i.e. it should provide:
+    P3            ## as both title and header on the page
+    Query         ## button to display current vote counts for both candidates
+    Cand 1        ## button to perform a vote for cand1 AND display new counts
+    Cand 2        ## button to perform a vote for cand2 AND display new counts
+    outlined-box  ## in which to display current counts for each candidate -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>P3</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="p3.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="p3.js"></script>
+  </head>
+  <body>
+    <h1 style="padding-left: 5%;">P3</h1>
+    <div class="container" id="buttons">
+      <div class="button-bar">
+        <div class="button-box">
+          <button type="button" id="counts" value="counts">Vote Counts</button>
+        </div>
+        <br />
+        <div class="button-box">
+          <button type="button" id="cand1" value="cand1">Candidate 1</button>
+        </div>
+        <br />
+        <div class="button-box" id="button-box">
+          <button type="button" id="cand2" value="cand2">Candidate 2</button>
+        </div>
+        <br />
+      </div>
+      <div class="main">
+        <br>
+        <br>
+        <div class="data-box" id="data-box">
+          <label for="Cand1">Candidate 1: </label><br />
+          <label for="Cand2">Candidate 2: </label>
+        </div>
+        <br />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,1 +1,82 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 3px;
+        box-sizing: border-box;
+        height: 100%;
+      }
+      body {
+        font-size: 10px;
+        text-align: center;
+        /* font-family: Arial, Helvetica, sans-serif; */
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: 5% 17.5% 60% 17.5%;
+        grid-template-rows: 75% 25%;
+        background-color: black;
+        /* padding: auto; */
+      }
+
+      .grid-item {
+        border: 1px solid black;
+        grid-row: 1 / span 2;
+      }
+      .wide-nav {
+          width: 100px !important;
+      }
+      .btn {
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      expand1 = () => {
+          const navItem = document.getElementById('col2').style.width = '40%';
+      }
+      expand2 = () => {
+          const navItem = document.getElementById('col4').style.width = '40%';
+      }
+      expand3 = () => {
+          const navItem = document.getElementById('row2').style.height = '40%';
+      }
+  </script>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item"  style="background-color: #f82c2c;">
+      </div>
+
+      <div class="grid-item"  id="col2" onclick="expand1()" style="background-color: #fff9d9;">
+        <img
+          src="./images/collapse.png"
+          alt="Collapse Image"
+          style="width: 20px;height: 20px;"
+        />
+        HIERARCHY
+      </div>
+      <div class="grid-item" style="background-color: #b7e1ed; grid-row: 1;">
+        BUILD
+      </div>
+      <div class="grid-item" id="row2" onclick="expand3()"style="background-color: #76e97f; grid-row: 2;">
+        <img
+          id="row2"
+          src="./images/collapse.png"
+          alt="Collapse Image"
+          style="width: 20px;height: 20px;"
+        />
+        ASSETS
+      </div>
+      <div class="grid-item" id="col4" onclick="expand2()"style="background-color: #e7f569;">
+        <img
+          src="./images/collapse.png"
+          alt="Collapse Image"
+          style="width: 20px;height: 20px;"
+        />INSPECT
+      </div>
+    </div>
+  </body>
+</html>
