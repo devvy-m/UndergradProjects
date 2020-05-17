@@ -1,0 +1,73 @@
+//Devon Layton
+
+/*BE SURE TO HAVE THIS AS THE FIRST EXECUTABLE LINE IN YOUR PROGRAM:
+    alarm(90);
+    Write a program that loops doing:sleep(1);
+   On receiving SIGINT, the program should print the following message
+	and continue to execute: received SIGINT
+   On receiving SIGUSR1, the program should print the following message
+	    and continue to execute: received SIGUSR1
+   However, when the program has received a total of 4 SIGUSR1 signals,
+	it should terminate after printing this message:terminating due to 4 SIGUSR1 signals
+   On receiving SIGUSR2 (2 instead of 1), the program should print the
+	    following message and terminate immediately:   received SIGUSR2
+   If the program is run with a single command-line arg
+	of  -hw  then it should simply  print hello world   and then  exit(0)
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <string.h>
+
+int sig1 = 0;			//to keep track of how many SIGUSR1 signals have been recieved
+void printHandler(int signum)		//SIGINT, SIGUSR1, SIGUSR2
+{
+	if(signum == 10)//sigusr1
+	{
+		sig1++;
+	}
+	if(sig1 ==4){
+		printf("terminating due to 4 SIGUSR1 signals");
+		//now exit
+		//exit(1);	//because you cant use certain functions in signal handler
+	}
+	else{
+		switch(signum)
+		{
+			case 2: printf("received SIGINT\n");
+				break;
+			case 10: printf("received SIGUSR1\n");
+				 break;
+			case 12: printf("received SIGUSR2\n");
+				 exit(1);
+				 break;
+			default: printf("received %d\n",signum);
+				break; 
+		}
+	}
+}
+
+int main(int argc, char *argv[])
+{
+       	alarm(90);
+	if (argc ==  2  &&  strcmp(argv[1],"-hw") == 0)	{
+		printf("hello world\n");
+                exit(0);
+       	}
+
+	signal(SIGINT,printHandler);
+	signal(SIGUSR1,printHandler);
+	signal(SIGUSR2, printHandler);
+	
+	while(1){
+		if(sig1 == 4)
+			exit(1);
+		sleep(1);
+	}
+
+	return 0;
+}
