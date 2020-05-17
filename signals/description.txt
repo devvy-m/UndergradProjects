@@ -1,0 +1,43 @@
+    Computer Systems
+                                 Project 5
+                                 Fall 2019
+
+
+turnin code:  cs_p5
+
+
+BE SURE TO HAVE THIS AS THE FIRST EXECUTABLE LINE IN YOUR PROGRAM:
+
+    alarm(90);
+
+
+Write a program that loops doing:
+
+    sleep(1);
+
+
+On receiving SIGINT, the program should print the following message
+and continue to execute:
+
+    received SIGINT
+
+On receiving SIGUSR1, the program should print the following message
+and continue to execute:
+
+    received SIGUSR1
+
+However, when the program has received a total of 4 SIGUSR1 signals,
+it should terminate after printing this message:
+
+    terminating due to 4 SIGUSR1 signals
+
+On receiving SIGUSR2 (2 instead of 1), the program should print the
+following message and terminate immediately:
+
+    received SIGUSR2
+
+
+As in prior projects, if the program is run with a single command-line arg
+of  -hw  then it should simply  print hello world   and then  exit(0)
+
+To run program: run make
