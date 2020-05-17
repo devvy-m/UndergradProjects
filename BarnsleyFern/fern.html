@@ -15,8 +15,9 @@
 
   <script id="fragment-shader" type="x-shader/x-fragment">
     precision highp float;
+    uniform vec4 fColor;
     void main() {
-        gl_FragColor = vec4( 0.0, 1.0, 0.0, 1.0 );
+        gl_FragColor = fColor;
     }
   </script>
 
