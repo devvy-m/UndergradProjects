@@ -54,3 +54,4 @@ function initShaders( gl, vertexShaderId, fragmentShaderId )
     }
 
     return program;
+}
