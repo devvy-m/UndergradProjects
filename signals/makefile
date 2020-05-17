@@ -1,9 +1,9 @@
 #
-p5:			p5.c
-			  cc -c p5.c
-		    cc -o p5 p5.o
+signalProgram:			signalProgram.c
+			 	cc -c signalProgram.c
+		    		cc -o signalProgram signalProgram.o
 
 
 clean:
-	      rm -f p5
-			  rm -f *.o
+	     			rm -f signalProgram
+			  	rm -f *.o
