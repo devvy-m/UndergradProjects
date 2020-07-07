@@ -63,10 +63,3 @@ palindrome(List) :-
     append([H|T], [H], List),
     palindrome(T).
     
-
-%Please design rules to find out the number of leave nodes in a binary tree.
-%Prolog term representing a binary tree i.e):
-%T1 = t(a,t(b,t(d,nil,nil),t(e,nil,nil)),t(c,nil,t(f,t(g,nil,nil),nil)))
-%leafcount(T,N), where T has N leaf nodes.
-
-%leafcount(T,N)
