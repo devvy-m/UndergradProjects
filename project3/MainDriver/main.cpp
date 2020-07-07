@@ -198,10 +198,6 @@ int factor( void )
 		}
 
 	}
-	else if (nextToken == RPAREN)
-	{
-		return exp();
-	}
 	else
 	{
 		throw runtime_error("Token LPAREN or INT expected!");
