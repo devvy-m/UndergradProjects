@@ -9,7 +9,10 @@ import random
 import math
 
 import tkinter as tk
+from tkinter import messagebox
 
+global count
+count = 0
 # Set up the window
 window = tk.Tk()
 window.title("Dart Game")
@@ -24,6 +27,8 @@ canvas = tk.Canvas(main_frame, width=800, height=800,
                    highlightthickness=0, bg="burlywood3")
 canvas.pack()
 
+########################## CANVAS FUNCTIONS #####################################
+
 
 def circle(coord, f_clr, b_clr, wdth):
     canvas.create_oval(coord[0]-coord[2], coord[1]-coord[2], coord[0]+coord[2], coord[1]+coord[2], fill=f_clr,
@@ -32,17 +37,18 @@ def circle(coord, f_clr, b_clr, wdth):
 
 def circ_regions(coord):
     r = 310                                             # new radius for circle regions
-    for d in range(8):                                  # loop over the 8 regions, use d to get new degree for arcs
+    # loop over the 8 regions, use d to get new degree for arcs
+    for d in range(8):
         r_or_b = "red" if d % 2 == 0 else "black"       # change color of each region
         canvas.create_arc(coord[0]-r, coord[1]-r, coord[0]+r, coord[1]+r,
                           style=tk.PIESLICE, start=d*45, extent=45, fill=r_or_b, outline="white", width=5)
 
 
-
 def point_values():
-    values = [5,10,20,15,25]                        # point values
+    values = [5, 10, 20, 15, 25]                        # point values
 
-    for t in range(2):                              # q#'s represent 4 quadrants, t value +/- position's
+    # q#'s represent 4 quadrants, t value +/- position's
+    for t in range(2):
         q0 = canvas.create_text(
             600-(t*125), 325-(t*100), text=values[1+(2*t)], font=('bold', 40))
         canvas.itemconfig(q0, angle=0, fill="white")
@@ -51,7 +57,7 @@ def point_values():
         canvas.itemconfig(q1, angle=0, fill="white")
         q2 = canvas.create_text(
             200+(t*125), 475+(t*100), text=values[1+(2*t)], font=("bold", 40))
-        canvas.itemconfig(q2, angle=0, fill="white") 
+        canvas.itemconfig(q2, angle=0, fill="white")
         q3 = canvas.create_text(
             600-(t*125), 475+(t*100), text=values[2-(2*t)], font=("bold", 40))
         canvas.itemconfig(q3, angle=0, fill="white")
@@ -59,51 +65,79 @@ def point_values():
             400, 400, text=values[4], font=('bold', 30))
         canvas.itemconfig(bulls_i, angle=0, fill="white")
 
+########################## Functionality ########################################
+
+
+def incr_count():
+    global count
+    count += 1
+    count_label["text"] = f"Throw  { + count} \n Darts?"
+
+def decr_count():
+    global count
+    count= count- 1 if count != 0 else 0
+    count_label["text"] = f"Throw  { + count} \n Darts?"
+
+
 def throw_darts():
     """Throw darts and calculate an estimate for pi"""
-    N = int(
-        sys.argv[1])                        # command line args are strings, convert to integer
-    inside = 0                              # count the number of darts inside the circle
-    for i in range(0, N, 1):
-        x = random.random()                 # generate new random x & y coordinates
-        y = random.random()
-        # calculate coordinate of the dart thrown
-        coords = math.sqrt(x*x + y*y)
+    try:                                        # divide by zero error handling
+        N = count
+        inside = 0                              # count the number of darts inside the circle
+        for _ in range(0, N, 1):
+            x = random.random()                 # generate new random x & y coordinates
+            y = random.random()
+            coords = math.sqrt(x*x + y*y)       # calculate coordinate of the dart thrown
 
-        if(coords <= 1.0):                  # include values that land on the circle's border
-            inside += 1
-            circle([x*900, y*900, 6], "yellow", "snow", 2)
+            if(coords <= 1.0):                  # include values that land on the circle's border
+                inside += 1
+                circle([x*500, y*500, 6], "yellow", "snow", 2)
+                    # (darts inside/total thrown) * area of board
+        score_total = (inside * 4) / N
+        score_label["text"] = f"Total Score:\n { + score_total}"
+    except ZeroDivisionError as err:
+        messagebox.showwarning("Error: 0 darts","Cannot throw 0 darts")
+        print(err)
 
-    # (darts inside/total thrown) * area of board
-    piEstimate = (inside * 4) / N
-    pi_label["text"] = f"Pi: { + piEstimate}"
-    print("pi estimate = ", piEstimate)  # print result
 
 
-piEstimate = 0
+
+########################### Main ###################################
+# count = 0
+score_total = 0
 
 # Set up widgets
-start_btn = tk.Button(side_bar, text="Throw Darts", width=10,
-                      height=5, command=throw_darts)
-pi_label = tk.Label(side_bar, text="Pi: " +
-                    str(piEstimate), width=10, height=5)
 
-canvas.create_rectangle(50, 50, 750, 750, fill="firebrick3")
+decr_btn = tk.Button(side_bar, text="-", width=5,
+                     height=2, command= decr_count)
+incr_btn = tk.Button(side_bar, text="+", width=5,
+                     height=2, command= incr_count)
 
-# coordinates for circles to be used in func calls
-coords = [[400, 400, 325], [400, 400, 32.5]]
-circle(coords[0], "grey12", "SlateGray4", 25)  # outer circle
+start_btn = tk.Button(side_bar, text="Start", width=10,
+                      height=3, command=throw_darts)
+count_label = tk.Label(side_bar, text=f"Throw  { + count} \n Darts?", width=10, height=5)
+score_label = tk.Label(side_bar, text="Score: \n\n" +
+                       str(score_total), width=10, height=6)
+
+# Create dartboard
+canvas.create_rectangle(50, 50, 750, 750, fill="forest green")
+coords = [[400, 400, 325], [400, 400, 32.5]]            # coordinates for circles to be used in func calls
+circle(coords[0], "grey12", "SlateGray4", 25)           # outer circle
 circ_regions(coords[0])
-circle(coords[1], "red4", "PaleGreen4", 3)  # inner circle
+circle(coords[1], "red4", "PaleGreen4", 3)              # inner circle
 point_values()
 
-
-# Set up grid
+# Set up grid areas
 main_frame.grid(row=0, column=1, sticky="nsew")
 side_bar.grid(row=0, column=0, sticky="ns")
 
-start_btn.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
-pi_label.grid(row=1, column=0, sticky="nsw", padx=5, pady=10)
+# Set number of darts to throw
+incr_btn.grid(row=0, column=0, sticky="ne", padx=2, pady=15)
+decr_btn.grid(row=0, column=0, sticky="nw", padx=2, pady=15)
+count_label.grid(row=1, column=0, sticky="nesw", padx=5,pady=5)
 
+# Display start button and score after thrown
+start_btn.grid(row=2, column=0, sticky="new", padx=5, pady=50)
+score_label.grid(row=3, column=0, sticky="sw", padx=5, pady=150)
 
 window.mainloop()
