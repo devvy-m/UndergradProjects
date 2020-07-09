@@ -11,8 +11,8 @@ import math
 import tkinter as tk
 from tkinter import messagebox
 
-global count
-count = 0
+global dart_count
+dart_count = 0
 # Set up the window
 window = tk.Tk()
 window.title("Dart Game")
@@ -68,22 +68,25 @@ def point_values():
 ########################## Functionality ########################################
 
 
-def incr_count():
-    global count
-    count += 1
-    count_label["text"] = f"Throw  { + count} \n Darts?"
+def incr_dart_count():
+    global dart_count
+    dart_count += 1
+    dart_count_label["text"] = f"Throw  { + dart_count} \n Darts?"
 
-def decr_count():
-    global count
-    count= count- 1 if count != 0 else 0
-    count_label["text"] = f"Throw  { + count} \n Darts?"
+def decr_dart_count():
+    global dart_count
+    dart_count= dart_count- 1 if dart_count != 0 else 0
+    dart_count_label["text"] = f"Throw  { + dart_count} \n Darts?"
 
 
 def throw_darts():
     """Throw darts and calculate an estimate for pi"""
     try:                                        # divide by zero error handling
-        N = count
-        inside = 0                              # count the number of darts inside the circle
+        N = dart_count
+        bd_wdth = 700
+        bd_hgt = 700
+        rad = 325
+        inside = 0                              # dart_count the number of darts inside the circle
         for _ in range(0, N, 1):
             x = random.random()                 # generate new random x & y coordinates
             y = random.random()
@@ -103,19 +106,19 @@ def throw_darts():
 
 
 ########################### Main ###################################
-# count = 0
+# dart_count = 0
 score_total = 0
 
 # Set up widgets
 
 decr_btn = tk.Button(side_bar, text="-", width=5,
-                     height=2, command= decr_count)
+                     height=2, command= decr_dart_count)
 incr_btn = tk.Button(side_bar, text="+", width=5,
-                     height=2, command= incr_count)
+                     height=2, command= incr_dart_count)
 
 start_btn = tk.Button(side_bar, text="Start", width=10,
                       height=3, command=throw_darts)
-count_label = tk.Label(side_bar, text=f"Throw  { + count} \n Darts?", width=10, height=5)
+dart_count_label = tk.Label(side_bar, text=f"Throw  { + dart_count} \n Darts?", width=10, height=5)
 score_label = tk.Label(side_bar, text="Score: \n\n" +
                        str(score_total), width=10, height=6)
 
@@ -134,7 +137,7 @@ side_bar.grid(row=0, column=0, sticky="ns")
 # Set number of darts to throw
 incr_btn.grid(row=0, column=0, sticky="ne", padx=2, pady=15)
 decr_btn.grid(row=0, column=0, sticky="nw", padx=2, pady=15)
-count_label.grid(row=1, column=0, sticky="nesw", padx=5,pady=5)
+dart_count_label.grid(row=1, column=0, sticky="nesw", padx=5,pady=5)
 
 # Display start button and score after thrown
 start_btn.grid(row=2, column=0, sticky="new", padx=5, pady=50)

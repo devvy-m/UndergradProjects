@@ -1,0 +1,52 @@
+
+                        Python Programming
+                            Summer 2020
+                             Project 2
+
+
+turnin code:  py_p2
+
+
+Write a python3 pgm to find all potential genes (codons in the same
+reading frame) in a sample set of DNA data.
+The genes should be no less than 33 bytes and no more than 99 bytes long (inclusive start & stop codons),
+*including* the start and stop codons.
+Start codons are all either ATG or GTG, and stop codons are all TAG.
+Both lower and upper case should be accepted.
+Not all characters in the input will necessarily be A,C,G,T.
+Your pgm should merely look for valid codons and accept all substrings
+including codons that are of the correct length.
+
+A gene is terminated by the stop codon nearest to its start codon in the same
+reading frame, even if it causes the potential gene to be too short.
+Note that genes may overlap, perhaps in different reading frames, or
+two genes may even share a stop codon in the same reading frame.
+
+(We have not covered regular expressions, and I do not recommend using them in
+this project.  However, if you are familiar with them and choose to use them
+anyway, be aware that overlapping strings are often not handled correctly.)
+
+The input filename will be the only command-line arg.
+The input will consist of lines containing a seqid followed by an arbitrary
+amount of whitespace then a character sequence.
+For example:
+
+seq01  ___atg______________________________tag___
+myseq    _GTG______________________________TAG________
+
+For each potential gene, print a single line with five pieces of information:
+    seqID  start_loc_relative_to_0  length_including_start_and_stop  start_codon  stop_codon
+For example, for the above input, we would print:
+    seq01  3  36  atg  tag
+    myseq  1  36  gtg  tag
+
+I will run the program on system64 this way:
+
+    python3 yourpgmname  FN
+
+where FN is the filename of a file containing input in the format described above.
+
+
+Use the turnin system to submit just the python script for grading.
+
+The program will be graded on system64 using the python3 command.
