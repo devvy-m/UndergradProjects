@@ -22,3 +22,5 @@ echo "RMB:  "  sharedStop_1_66_31_36 1 66 GTG TAG
 echo "RMB:  "  sharedStop_1_66_31_36 31 36 ATG TAG
 echo "RMB:  "  overlapDiffFrames_4_51_41_33 4 51 GTG TAG
 echo "RMB:  "  overlapDiffFrames_4_51_41_33 41 33 ATG TAG
+
+rm -f IN
