@@ -83,9 +83,9 @@ def throw_darts():
     """Throw darts and calculate an estimate for pi"""
     try:                                        # divide by zero error handling
         N = dart_count
-        bd_wdth = 700
-        bd_hgt = 700
-        rad = 325
+        # bd_wdth = 700
+        # bd_hgt = 700
+        # rad = 325
         inside = 0                              # dart_count the number of darts inside the circle
         for _ in range(0, N, 1):
             x = random.random()                 # generate new random x & y coordinates
