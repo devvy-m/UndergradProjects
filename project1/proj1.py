@@ -106,7 +106,6 @@ def throw_darts():
 
 
 ########################### Main ###################################
-# dart_count = 0
 score_total = 0
 
 # Set up widgets
@@ -124,7 +123,7 @@ score_label = tk.Label(side_bar, text="Score: \n\n" +
 
 # Create dartboard
 canvas.create_rectangle(50, 50, 750, 750, fill="forest green")
-coords = [[400, 400, 325], [400, 400, 32.5]]            # coordinates for circles to be used in func calls
+coords = [[400, 400, 325], [400, 400, 32.5]]            # coordinates for big&small circles 
 circle(coords[0], "grey12", "SlateGray4", 25)           # outer circle
 circ_regions(coords[0])
 circle(coords[1], "red4", "PaleGreen4", 3)              # inner circle

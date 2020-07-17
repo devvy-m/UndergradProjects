@@ -1,0 +1,26 @@
+#!/bin/sh
+
+rm -f IN1
+
+cat > IN1 <<EOF
+s1   catgccccgtgaaaa
+stwo ccgtgccccctgaaa
+s3   ccctgccccctgaaa
+seq4 atgtgaaaaaaaaaaaaaaaaaaaaaaaagtc
+EOF
+
+rm -f p3mod.py
+cp $1 p3mod.py
+grep yield p3mod.py
+
+echo
+sleep 2
+
+echo
+python3 p3main.py IN1
+echo
+
+echo RMB "s1   (1, 8)"
+echo RMB "stwo (2,)"
+echo RMB "s3   ()"
+echo RMB "seq4 (0,2)"
