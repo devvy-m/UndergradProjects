@@ -7,6 +7,10 @@ s1   catgccccgtgaaaa
 stwo ccgtgccccctgaaa
 s3   ccctgccccctgaaa
 seq4 atgtgaaaaaaaaaaaaaaaaaaaaaaaagtc
+s1_U   CATGCCCCGTGAAAA
+st1   catgccccgtgaaaa
+st2 ccgtgccccctgaaa
+st3   ccctgccccctgaaa
 EOF
 
 rm -f p3mod.py
@@ -24,3 +28,8 @@ echo RMB "s1   (1, 8)"
 echo RMB "stwo (2,)"
 echo RMB "s3   ()"
 echo RMB "seq4 (0,2)"
+echo "\n"
+echo RMB "s1_U   (1, 8)"
+echo RMB "st1 ('atg', 1) ('gtg', 8)"
+echo RMB "stwo ('gtg', 2)"
+echo RMB  "s3   ()"

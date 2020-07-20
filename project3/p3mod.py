@@ -4,31 +4,15 @@
 
 
 def find_starts():
-    i = 0
-    line = yield
-    print("recvd: ", line)
-    # out = []
-
+    # when primed, create empty string that be used it next gen calls
+    in_str = ""
     while True:
-        # line = yield
-        # print("recvd: ", line)
-        out = []
-        for i in range(len(line)):
-            if line[i:i+3] in (["atg", "gtg"]):
-                out.insert(i, i)
-        val = yield tuple(out)
-        # out.clear()
-        print(val)
-
-# def find_starts():
-#     line = yield
-#     print("Recvd: ", line)
-#     # while True:
-#     #     x = set(["atg", "gtg"])
-#     count = " "
-#     for i in line:
-#         if ("atg" or "gtg") in line:
-#             count += str(i)
-#             # val = yield str(count)
-#     # return count
-#     yield count
+        # prev data is remembered so update to an empty list
+        out_data = []
+        # list comp. finding start codons
+        [out_data.insert(i, (in_str[i:i+3], i)) for i in range(len(in_str))
+         if in_str[i:i+3] in (["atg", "gtg", "ATG", "GTG"])]        
+        # if list is empty, return an empty tuple
+        final_out = [()] if not out_data else out_data
+        # yield data to main & in_str assigned new seq with main's next .send(seq)
+        in_str = yield final_out
