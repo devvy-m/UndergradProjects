@@ -1,0 +1,66 @@
+
+Write a python3 program that uses the multiprocessing module to examine a
+range of integers *inclusive*.  For each integer, compute its square root
+and then determine if the first digit after the decimal point is 7.
+For example:
+    127.677  # would NOT be counted
+    123.766  # would be counted ***
+
+Converting to a string and looking at the first char after . is probably
+an UN-acceptably slow way to examine each one; use a little arithmetic.
+
+The program will be run using 3 command-line arguments like this:
+
+    python3 p4.py  2000 30000  1
+    python3 p4.py  1000 10000  3
+
+The first and second args are the range of ints to be examined, inclusive.
+The third arg is the number of processes to use to do the computation.
+
+Note that you only count the total number of ints that match the criteria;
+you do not need to keep the matching numbers.
+
+Use the Process facility of the multiprocessing module to create the
+worker processes.  Use the Queue facility of the multiprocessing module
+to retrieve the results from the worker processes.
+
+The mainline program should NOT perform any of the computation.
+Instead, it should merely start the workers, wait for their results, and
+then print the final result.
+
+Use the time.time facility in the mainline to determine the amount of time
+between immediately prior to the worker processes being "start"ed and 
+immediately after they are "join"ed.
+Print the time to 2 decimal places.
+
+The print should contain EXACTLY 1 LINE OF OUTPUT containing these values:
+    the total time
+    the total number of integers matching the criteria
+
+For example, these runs might produce *roughly* these prints on system64:
+
+    python3 p4.py 1000 100000 1
+        0.05 9918
+
+    python3 p4.py 1000 1000000 1
+        0.51 100001
+
+    python3 p4.py 1000 11000000 1
+        4.23 1099818
+
+    python3 p4.py 1000 11000000 2
+        2.53 1099818
+
+    python3 p4.py 1000 11000000 3
+        1.81 1099818
+
+    python3 p4.py 1000 11000000 4
+        1.04 1099818
+
+So, speedup would be near-linear for large enough problems.
+
+
+BE SURE TO HAVE THIS AS THE FIRST EXECUTABLE CODE IN YOUR PROGRAM:
+
+    import signal
+    signal.alarm(120)

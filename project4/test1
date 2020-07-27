@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo
+echo RMB  0.xxx   304
+python3 $1  1000 4000  1
+
+echo
+echo
+echo RMB  0.xxx   304
+python3 $1  1000 4000  4

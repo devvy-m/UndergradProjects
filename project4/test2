@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo
+
+echo "RMB  ~4 secs  1099818"
+
+python3 $1  1000 11000000  1
