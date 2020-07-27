@@ -24,12 +24,12 @@ echo
 python3 p3main.py IN1
 echo
 
-echo RMB "s1   (1, 8)"
-echo RMB "stwo (2,)"
-echo RMB "s3   ()"
-echo RMB "seq4 (0,2)"
+echo "s1   (1, 8)"
+echo "stwo (2,)"
+echo "s3   ()"
+echo "seq4 (0,2)"
 echo "\n"
-echo RMB "s1_U   (1, 8)"
-echo RMB "st1 ('atg', 1) ('gtg', 8)"
-echo RMB "stwo ('gtg', 2)"
-echo RMB  "s3   ()"
+echo "s1_U   (1, 8)"
+echo "st1 ('atg', 1) ('gtg', 8)"
+echo "stwo ('gtg', 2)"
+echo "s3   ()"
