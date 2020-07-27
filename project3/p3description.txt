@@ -34,7 +34,3 @@ then, the program should print:
 
 Note that all starts for a single input print on a single line.
 
-
-Use turnin to submit only your python source file.
-
-
