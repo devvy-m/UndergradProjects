@@ -13,9 +13,6 @@ st2 ccgtgccccctgaaa
 st3   ccctgccccctgaaa
 EOF
 
-rm -f p3mod.py
-cp $1 p3mod.py
-grep yield p3mod.py
 
 echo
 sleep 2
