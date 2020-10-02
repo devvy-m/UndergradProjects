@@ -9,9 +9,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-void print(int r, int c, float **arr);
 void calculateDiff(int r, int c, float epsilon, float **arrA, float **arrB, float **tempArr);
 void initArrays(float **A, float **B, int numRows, int numCols, float topTemp, float leftTemp, float rightTemp, float bottomTemp);
+void print(float **arrA, int r, int c)
+{
+
+    for (int i = 0; i < r; i++)
+    {
+        for (int j = 0; j < c; j++)
+        {
+            printf(" %.6f ", arrA[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n\n");
+}
 
 int main(int argc, char *argv[])
 {
@@ -134,25 +146,24 @@ void calculateDiff(int numR, int numC, float epsilon, float **arrA, float **arrB
     int indx, rowIndex, colIndex; //loop variables
     float lgRes;
 
-    for (indx = 0; indx < 10; indx++)
+    for (indx = 0; endLoop!= 1; indx++)
     {
-        double maxDiff = 0.0;
+        float lgBase = 2.0;
+        float lgRes;
+        float maxDiff = 0.0;
+        float absDiff = 0.0; // absolute value of newGridVal - currGridIndexVal
+        float neighborSum;   //sum of current gridIndex's north, east, south, west neighbor values
+        float newGridVal;
 
         for (rowIndex = 1; rowIndex < numR - 1; rowIndex++)
         {
             for (colIndex = 1; colIndex < numC - 1; colIndex++)
             {
-                double absDiff = 0.0;     // absolute value of newGridVal - currGridIndexVal
-                double neighborSum = 0.0; //sum of current gridIndex's north, east, south, west neighbor values
-                double newGridVal;
-
                 neighborSum = arrA[rowIndex - 1][colIndex] + arrA[rowIndex + 1][colIndex] + arrA[rowIndex][colIndex - 1] + arrA[rowIndex][colIndex + 1];
                 newGridVal = neighborSum / 4.0;
                 absDiff = fabsf(newGridVal - arrA[rowIndex][colIndex]);
                 if (absDiff > maxDiff)
                 {
-                    printf("newA: %f  %f\n", absDiff, arrA[rowIndex][colIndex]);
-
                     maxDiff = absDiff;
                     // printf("Abs:%f   Max:%f   New:%f  Grid: %f  Neighbor:%f\n", absDiff, maxDiff, newGridVal, arrA[rowIndex][colIndex], neighborSum);
                 }
@@ -168,14 +179,15 @@ void calculateDiff(int numR, int numC, float epsilon, float **arrA, float **arrB
             // printf("%f   %f \t", log2f(indx), log2(indx));
             printf("%10d %.6f \n", indx, maxDiff);
         }
+        print(arrA, numR, numC);
+        arrT = arrB;
+        arrB = arrA;
+        arrA = arrT;
         if (maxDiff < epsilon)
         {
             printf("%10d %.6f \n", indx, maxDiff);
             endLoop = 1;
             exit(0);
         }
-        arrT = arrB;
-        arrB = arrA;
-        arrA = arrT;
     }
 }
