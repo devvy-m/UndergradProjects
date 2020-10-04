@@ -9,27 +9,27 @@ double evalfunc(int nodeid, int *expandid1, int *expandid2); // prototype
 void *sub(void *inThread);
 double nodeSearch(int inId);
 
-
 struct node
 {
     int id;
     struct node *next;
 };
 
+long int expanded = 0;     // keeps track of number of expanded nodes
+long int loopCntr;         // represents node id calculated in subRoutine
+long int numSolutions;     // search space or the number of solutions to find
+long int totalVisited = 0; //how many times threads search for a solution
+long int totalFound = 0;   // curr total number of solutions found
 
-long int cntr;
-long int numSolutions;
-long int totalVisited = 0;
-pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER; // init mutex
 
 int main(int argc, char *argv[])
 {
-
     int numThreads = atoi(argv[1]);
     numSolutions = atoi(argv[2]);
-    int i, thrd[numThreads], rc;
 
-    cntr = 0;
+    int i, thrd[numThreads], rc;
+    loopCntr = 0; //init global/shared loop counter
 
     pthread_t threadId[numThreads];
     for (i = 0; i < numThreads; i++)
@@ -41,97 +41,79 @@ int main(int argc, char *argv[])
     for (i = 0; i < numThreads; i++)
         pthread_join(threadId[i], NULL);
 
-
     pthread_mutex_destroy(&m);
 
-    printf("--Terminating -- Examined %ld nodes \n", totalVisited);
-
+    printf("Terminating -- Examined %ld nodes \n", totalVisited); //print termination message
     return 0;
 }
 
 void *sub(void *inThread)
 {
-    // alarm(180);
-    int id;
-    long int val;
-    double stime;
-    double rc, found;
+    int threadId;
+    long int nodeId;
+    double found; //return value from nodeSearch
+    threadId = *((int *)inThread);
 
-
-
-    id = *((int *)inThread);
-    while (numSolutions > 0)
-    {
+    while (expanded >= 0)
+    { //while nodes to search exist
         pthread_mutex_lock(&m);
-        val = (cntr >= 0) ? cntr++ : 0;
+        nodeId = (loopCntr >= 0) ? loopCntr++ : 0; // split thread work
         pthread_mutex_unlock(&m);
-        if (val >= 0)
-        {
-
-            found = nodeSearch(val);
+        if (nodeId >= 0)
+        {                               // if there is work to do
+            found = nodeSearch(nodeId); // pass work(nodeId to check)
             if (found != 0.0)
-            {
-                numSolutions--;
+            {                 // if returned value is a solution
+                totalFound++; // special case: searching for N solutions, not every
             }
         }
-        if (val == numSolutions)
+        if (totalFound == numSolutions) // if special case, otherwise search the whole search space
         {
-            numSolutions = 0;
+            expanded = -1;
         }
     }
 }
 
+// each thread works on one node at a time, so a linked list is not needed
+// allocate new node, node's id is assigned the id passed from thread
+// check evalfunc return value, if solution, print out
+// if expand node id's are valid, increment exapanded node count
+// else decrement expanded since a solution cannot be found at that node 
 double nodeSearch(int inId)
 {
-    totalVisited++;
     int expandid1, expandid2;
-    double rc, found = 0.0;
-    struct node *currnode, *tofree, *tailnode, *expandnode1, *expandnode2;
+    double retVal, found = 0.0;
+    struct node *currnode, *temp;
 
     currnode = (struct node *)malloc(sizeof(struct node));
     currnode->id = inId;
     currnode->next = NULL;
-    tailnode = currnode;
-    rc = evalfunc(currnode->id, &expandid1, &expandid2);
-    if (rc > 1.0)
+    retVal = evalfunc(currnode->id, &expandid1, &expandid2);
+    if (retVal > 1.0)
     {
-        printf("%d %lf\n", currnode->id, rc);
-        found = rc;
+        printf("%d %lf\n", currnode->id, retVal);
+        found = retVal;
     }
     if (expandid1 >= 0)
     {
-        expandnode1 = (struct node *)malloc(sizeof(struct node));
-        expandnode1->id = expandid1;
-        expandnode1->next = NULL;
+        expanded++;
+        totalVisited++;
     }
     else
     {
-        expandnode1 = NULL;
+        expanded--;
     }
     if (expandid2 >= 0)
     {
-        expandnode2 = (struct node *)malloc(sizeof(struct node));
-        expandnode2->id = expandid2;
-        expandnode2->next = NULL;
+        expanded++;
+        totalVisited++;
+
     }
     else
     {
-        expandnode2 = NULL;
+        expanded--;
     }
-    if (expandnode1)
-    {
-        tailnode->next = expandnode1;
-        tailnode = expandnode1;
-    }
-    if (expandnode2)
-    {
-        tailnode->next = expandnode2;
-        tailnode = expandnode2;
-    }
-    tofree = currnode;
+    temp = currnode;
     currnode = currnode->next;
-    free(tofree);
-
-
-    return found;
-}
+    free(temp);
+    return found; //return either the value of the solutio
