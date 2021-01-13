@@ -1,5 +1,5 @@
 #
-p3:             p3.c
+threads:        threads.c
                 cc -Ofast -o p3 p3.c -lm -lpthread
 
 clean:
