@@ -1,8 +1,3 @@
-
-// Devon Layton
-// Project 3 cs_p3
-// Due: Oct.10, 2019
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
