@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo $$   # echo my pid
+
+./signalProgram &
+
+pid=$!   # get child pid
+echo "PID" $pid
+
+sleep 2
+/bin/kill -USR1 $pid
+
+sleep 2
+/bin/kill -INT $pid
+
+sleep 2
+/bin/kill -USR1 $pid
+
+sleep 2
+/bin/kill -INT $pid
+
+sleep 2
+/bin/kill -INT $pid
+
+sleep 2
+/bin/kill -USR2 $pid
+
+echo
+pwd
