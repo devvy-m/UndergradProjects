@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo
+echo  RMB "~ 16 30 secs"
+echo  RMB "1 27.25   10661 0.00499"
+echo
+
+/usr/bin/time -p  mpiexec -n 2  ./p5 500 600 100 100 100 400 0.005
+
+echo
+echo  RMB "~ 4 secs"
+echo  RMB "1 27.25   10661 0.00499"
+echo
+
+/usr/bin/time -p  mpiexec -n 5  ./p5 500 600 100 100 100 400 0.005
+
+echo
+pwd
+echo

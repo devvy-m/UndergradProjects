@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# tiny test to get started
+echo
+echo RMB  387 0.099960
+echo
+/usr/bin/time -p   ./p1  200 200 100 200 300 400 0.1
+echo
+
+# the sample run in p1.txt with given output
+echo
+echo RMB  181 0.099609
+echo
+/usr/bin/time -p   ./p1  500 500 0 100 100 100 0.1
+echo
+
+# do-able by a *C* pgm in under 10 secs even on magpie
+echo
+echo RMB  1817 0.009998
+echo
+/usr/bin/time -p   ./p1  500 500 0 100 100 100 0.01
+echo
+
+# should be do-able by a *C* pgm in under 10 secs even on magpie (goes to iter 322)
+echo
+echo RMB  322 0.049942
+echo
+/usr/bin/time -p   ./p1  1111 2222 0 100 100 100 0.05
+echo
+
+# 10+ secs  (with -Ofast on c00)
+echo
+echo RMB  "   1  24.994446"
+echo RMB  "3234   0.014984"
+echo
+echo RMB  "10.7 secs"
+echo
+echo
+/usr/bin/time -p  ./p1  1500 3000 100 100 100 400 0.015
+echo
+pwd
+echo
+

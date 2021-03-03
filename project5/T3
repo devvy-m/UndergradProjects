@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo
+echo  RMB "5 separate hosts for just 1 run"
+echo  RMB "~ 10 secs"
+echo  RMB "1 27.25   5295 0.00999"
+echo
+
+/usr/bin/time -p  mpiexec -f ~/beowulf_hosts -n 5  ./p5 500 600 100 100 100 400 0.01
+
+echo
+pwd
+echo

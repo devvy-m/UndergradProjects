@@ -1,0 +1,37 @@
+turnin_code:  pp_p4
+
+
+Write an MPI C program that provides the following functionality.
+
+BE SURE THAT EVERY RANK DOES an alarm first, e.g.:
+    
+    alarm(180);
+
+where 180 is a sufficient number of seconds for your rank to complete
+its work.
+
+To run the program I will type commands like this one:
+
+    mpiexec -n 16  ./p4
+
+where the 16 represents the number of ranks to use.
+
+Rank 0 should merely act as a manager process here.  It should retrieve
+from each of the other ranks, the hostname and hostid where that rank
+is running.  Rank 0 should print the results sorted by rank, including
+information about its own hostname and hostid.  Depending on where the
+ranks run, rank 0 would print something like this:
+
+    0  c00  2da1c8a2
+    1  c03  2da1cba2
+    2  c06  2da1cea2
+
+
+Use turnin to submit a tar file containing all of your project files,
+including a makefile that will build the executable program which MUST
+be named p4.  Note that I only type the simple command "make" below in
+order to have the program built.
+
+    rm -rf p4
+    rm -f *.o
+    make
