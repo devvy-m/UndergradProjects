@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cat > IN  <<EOF
+onlyone_1_33    _AtG___________________________TaG___TAG___tag___
+EOF
+
+python3 $1  IN
+
+echo 
+echo
+echo "RMB:  "  onlyone_1_33"                     "1 33 ATG TAG
+
+
+rm -f IN

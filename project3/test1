@@ -1,0 +1,32 @@
+#!/bin/sh
+
+rm -f IN1
+
+cat > IN1 <<EOF
+s1   catgccccgtgaaaa
+stwo ccgtgccccctgaaa
+s3   ccctgccccctgaaa
+seq4 atgtgaaaaaaaaaaaaaaaaaaaaaaaagtc
+s1_U   CATGCCCCGTGAAAA
+st1   catgccccgtgaaaa
+st2 ccgtgccccctgaaa
+st3   ccctgccccctgaaa
+EOF
+
+
+echo
+sleep 2
+
+echo
+python3 p3main.py IN1
+echo
+
+echo "s1   (1, 8)"
+echo "stwo (2,)"
+echo "s3   ()"
+echo "seq4 (0,2)"
+echo "\n"
+echo "s1_U   (1, 8)"
+echo "st1 ('atg', 1) ('gtg', 8)"
+echo "stwo ('gtg', 2)"
+echo "s3   ()"

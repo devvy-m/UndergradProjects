@@ -1,0 +1,26 @@
+#!/bin/sh
+
+cat > IN  <<EOF
+noneShort   _AtG________________________TaG____
+1_33    _AtG___________________________TaG____
+onlyone_1_33    _AtG___________________________TaG___TAG___tag___
+noneWrongFrames   _AtG____________________________TaG____
+4_99    ____AtG_____________________________________________________________________________________________TaG____
+noneLong   ____AtG________________________________________________________________________________________________TaG____
+sharedStop_1_66_31_36 _GTG___________________________ATG______________________________TAG___
+overlapDiffFrames_4_51_41_33  ____GTG__________________________________ATG________TAG________________TAG_____
+EOF
+
+python3 $1  IN
+
+echo 
+echo
+echo "RMB:  "  1_33"                             "1 33 ATG TAG
+echo "RMB:  "  onlyone_1_33"                     "1 33 ATG TAG
+echo "RMB:  "  4_99"                             "4 99 ATG TAG
+echo "RMB:  "  sharedStop_1_66_31_36"            "1 66 GTG TAG
+echo "RMB:  "  sharedStop_1_66_31_36"            "31 36 ATG TAG
+echo "RMB:  "  overlapDiffFrames_4_51_41_33"     "4 51 GTG TAG
+echo "RMB:  "  overlapDiffFrames_4_51_41_33"     "41 33 ATG TAG
+
+rm -f IN

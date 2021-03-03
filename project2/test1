@@ -1,0 +1,17 @@
+#!/bin/sh
+
+cat > IN  <<EOF
+seq02  ___atg______________________________tag___
+0_33    AtG___________________________TaG
+seq01  xxxatgxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtagxxx
+myseq   xgtgxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtagxxxxxxxx
+EOF
+
+python3 $1  IN
+
+echo 
+echo
+echo "RMB:  "  seq02 3  36  atg  tag
+echo "RMB:  "  0_33  0 33 atg tag
+echo "RMB:  "  seq01 3  36  atg  tag
+echo "RMB:  "  myseq 1  36  gtg  tag
