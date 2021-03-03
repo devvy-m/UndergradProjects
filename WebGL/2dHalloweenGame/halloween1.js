@@ -471,7 +471,7 @@ function GenerateTrees() {
   colors.push(vec4(0.0, 0.0, 0.0, 1));
 
   points.push(vec2(4, 0.8)); //third branch
-  colors.push(vec4(0.1, 0., 0.0, 1));
+  colors.push(vec4(0.1, 0, 0.0, 1));
   points.push(vec2(2.5, 0));
   colors.push(vec4(0.0, 0.0, 0.0, 1));
   points.push(vec2(3.9, 0.0));
@@ -486,26 +486,24 @@ function GenerateTrees() {
 }
 
 function GenerateBow() {
-
-  
   points.push(vec2(-2, -6.5));
   colors.push(vec4(0.21, 0.11, 0.11, 1));
   points.push(vec2(-1.7, -6));
   colors.push(vec4(0.11, 0.1, 0.1, 1));
 
-  points.push(vec2(-.8, -5.6));
+  points.push(vec2(-0.8, -5.6));
   colors.push(vec4(0.14, 0.1, 0.1, 1));
 
-  points.push(vec2(-.9, -5.45));
+  points.push(vec2(-0.9, -5.45));
   colors.push(vec4(0.14, 0.1, 0.1, 1));
 
   points.push(vec2(0, -5.25));
   colors.push(vec4(0.14, 0.1, 0.1, 1));
 
-  points.push(vec2(.9, -5.45));
+  points.push(vec2(0.9, -5.45));
   colors.push(vec4(0.14, 0.1, 0.1, 1));
 
-  points.push(vec2(.8, -5.6));
+  points.push(vec2(0.8, -5.6));
   colors.push(vec4(0.14, 0.1, 0.1, 1));
 
   points.push(vec2(1.7, -6));
@@ -514,26 +512,23 @@ function GenerateBow() {
   colors.push(vec4(0.21, 0.11, 0.11, 1));
 
   points.push(vec2(-1.8, -6.3));
-  colors.push(vec4(0.9,.9, .9, 1));
+  colors.push(vec4(0.9, 0.9, 0.9, 1));
   points.push(vec2(-1.8, -6.2));
-  colors.push(vec4(0.5,.5, .5, 1));
+  colors.push(vec4(0.5, 0.5, 0.5, 1));
 
   points.push(vec2(-0.1, -5.38));
-  colors.push(vec4(0.7,.7, .7, 1));
+  colors.push(vec4(0.7, 0.7, 0.7, 1));
   points.push(vec2(0.1, -5.38));
-  colors.push(vec4(0.7,.7, .7, 1));
-  
+  colors.push(vec4(0.7, 0.7, 0.7, 1));
+
   points.push(vec2(1.8, -6.2));
-  colors.push(vec4(0.5,.5, .5, 1));
+  colors.push(vec4(0.5, 0.5, 0.5, 1));
   points.push(vec2(1.8, -6.3));
-  colors.push(vec4(0.9,.9, .9, 1));
-  
+  colors.push(vec4(0.9, 0.9, 0.9, 1));
 }
 function GenerateArrow() {
-
-
   points.push(vec2(0, 0));
-  colors.push(vec4(0.21, 0.11, 0.11, 1));;
+  colors.push(vec4(0.21, 0.11, 0.11, 1));
   points.push(vec2(1, 0.1));
   colors.push(vec4(1.0, 1.0, 1.0, 1));
   points.push(vec2(1, 0.1));
@@ -541,14 +536,14 @@ function GenerateArrow() {
 
   points.push(vec2(3, 1.4));
   colors.push(vec4(1.0, 1.0, 1.0, 1));
-  points.push(vec2(3., 1.4));
+  points.push(vec2(3, 1.4));
   colors.push(vec4(1.0, 1.0, 1.0, 1));
   points.push(vec2(2, 0.0));
   colors.push(vec4(1.0, 1.0, 1.0, 1));
 
-  points.push(vec2(2., 0.0));
+  points.push(vec2(2, 0.0));
   colors.push(vec4(1.0, 1.0, 1.0, 1));
-  points.push(vec2(2., 0.0));
+  points.push(vec2(2, 0.0));
   colors.push(vec4(0.21, 0.11, 0.11, 1));
   points.push(vec2(4, 1.4));
   colors.push(vec4(1.0, 1.0, 1.0, 1));
@@ -574,9 +569,6 @@ function GenerateArrow() {
   colors.push(vec4(0.21, 0.11, 0.11, 1));
   points.push(vec2(-6.4, -0.1));
   colors.push(vec4(0.21, 0.11, 0.11, 1));
-
-
-  
 }
 
 function DrawGhost() {
@@ -786,10 +778,10 @@ function DrawTrees() {
 
 function DrawBow() {
   var r;
-  modelViewMatrix = mat4(); 
+  modelViewMatrix = mat4();
   modelViewStack.push(modelViewMatrix);
   modelViewMatrix = mult(modelViewMatrix, translate(0, 2.21, 0));
-  modelViewMatrix = mult(modelViewMatrix, scale4(.7, 1.25, 1));
+  modelViewMatrix = mult(modelViewMatrix, scale4(0.7, 1.25, 1));
   gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
   gl.drawArrays(gl.TRIANGLE_STRIP, 258, 9);
   modelViewStack.pop();
@@ -805,29 +797,26 @@ function DrawBow() {
   gl.drawArrays(gl.LINE_STRIP, 267, 6);
   modelViewStack.pop();
 
-  
-
   //gl.drawArrays(gl.LINE_STRIP, 264, )
 }
 
-function DrawArrow(){
+function DrawArrow() {
   modelViewMatrix = mat4();
-  var r; 
+  var r;
   r = rotate(-90, 0, 0, 1);
   modelViewMatrix = r;
 
   //first row of feathers
   modelViewStack.push(modelViewMatrix); // save the previous MVM
-  s = scale4(1/4, 1/4, 0);
+  s = scale4(1 / 4, 1 / 4, 0);
   modelViewMatrix = mult(modelViewMatrix, translate(5.7, 0, 0));
   modelViewMatrix = mult(modelViewMatrix, s);
   gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
   gl.drawArrays(gl.TRIANGLE_FAN, 273, 13);
   modelViewMatrix = modelViewStack.pop(); // undo the scaling effect
 
-
   modelViewStack.push(modelViewMatrix); // save the previous MVM
-  s = scale4(1/4, -1/4, 0);
+  s = scale4(1 / 4, -1 / 4, 0);
   modelViewMatrix = mult(modelViewMatrix, translate(5.7, 0, 0));
   modelViewMatrix = mult(modelViewMatrix, s);
   gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
@@ -839,40 +828,37 @@ function DrawArrow(){
 
   //second row of feathers
   modelViewStack.push(modelViewMatrix); // save the previous MVM
-  s = scale4(1/4, 1/4, 0);
+  s = scale4(1 / 4, 1 / 4, 0);
   modelViewMatrix = mult(modelViewMatrix, translate(5.3, 0, 0));
   modelViewMatrix = mult(modelViewMatrix, s);
   gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
   gl.drawArrays(gl.TRIANGLE_FAN, 273, 13);
   modelViewMatrix = modelViewStack.pop(); // undo the scaling effect
   modelViewStack.push(modelViewMatrix); // save the previous MVM
-  s = scale4(1/4, -1/4, 0);
+  s = scale4(1 / 4, -1 / 4, 0);
   modelViewMatrix = mult(modelViewMatrix, translate(5.3, 0, 0));
   modelViewMatrix = mult(modelViewMatrix, s);
   gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
   gl.drawArrays(gl.TRIANGLE_FAN, 273, 13);
   modelViewMatrix = modelViewStack.pop(); // undo the scaling effect
 
-
   modelViewStack.push(modelViewMatrix); // save the previous MVM
-  s = scale4(1/4, 1/4, 0);
+  s = scale4(1 / 4, 1 / 4, 0);
   modelViewMatrix = mult(modelViewMatrix, translate(3.3, 0, 0));
-  modelViewMatrix = mult(modelViewMatrix, rotate(-22, 0, 0,1));
+  modelViewMatrix = mult(modelViewMatrix, rotate(-22, 0, 0, 1));
   modelViewMatrix = mult(modelViewMatrix, s);
   gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
   gl.drawArrays(gl.TRIANGLE_FAN, 273, 13);
   modelViewMatrix = modelViewStack.pop(); // undo the scaling effect
   modelViewStack.push(modelViewMatrix); // save the previous MVM
-  s = scale4(1/4, -1/4, 0);
+  s = scale4(1 / 4, -1 / 4, 0);
   modelViewMatrix = mult(modelViewMatrix, translate(3.3, 0, 0));
-  modelViewMatrix = mult(modelViewMatrix, rotate(22, 0, 0,1));
+  modelViewMatrix = mult(modelViewMatrix, rotate(22, 0, 0, 1));
   modelViewMatrix = mult(modelViewMatrix, s);
   gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
   gl.drawArrays(gl.TRIANGLE_FAN, 273, 13);
   modelViewMatrix = modelViewStack.pop(); // undo the scaling effect
-  
 }
-
 
 function render() {
   gl.clear(gl.COLOR_BUFFER_BIT);
