@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>P5</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="p5.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="p5.js"></script>
+  </head>
+  <body>
+    <h1 style="padding-left: 2.5%;">P5</h1>
+    <div class="container">
+      <section class="buttonbox">
+        <form name="form" id="form">
+          <label for="dimmensions">Dimmensions of Square Canvas: </label>
+          <input
+            type="number"
+            name="dimmensions"
+            id="dimmensions"
+            min="300"
+            max="900"
+            value="500"
+            step="100"
+          /><br />
+          <label for="darts">Number of Darts to Throw: </label>
+          <input
+            type="number"
+            name="darts"
+            id="darts"
+            min="300"
+            max="900"
+            value="500"
+            step="100"
+          /><br />
+          <button type="button" id="run">Run!</button>
+        </form>
+      </section>
+      <section id="canvasbox">
+        <!-- <section > -->
+        <canvas id="canvas" width="auto" height="auto"></canvas>
+      </section>
+      <section id="pibox">
+        <!-- <output type="number" id="piComputation"></output> -->
+      </section>
+    </div>
+  </body>
+</html>
