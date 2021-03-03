@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+# echo
+# grep socketserver p5.py
+# echo
+
+python3 p5.py 2222

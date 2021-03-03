@@ -97,7 +97,7 @@ def throw_darts():
                 circle([x*500, y*500, 6], "yellow", "snow", 2)
                     # (darts inside/total thrown) * area of board
         score_total = (inside * 4) / N
-        score_label["text"] = f"Total Score:\n { + score_total}"
+        score_label["text"] = f"Total Score:\n { + "{0:5}".format(score_total}"
     except ZeroDivisionError as err:
         messagebox.showwarning("Error: 0 darts","Cannot throw 0 darts")
         print(err)

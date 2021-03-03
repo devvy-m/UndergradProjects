@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+python3 P5CLI.py localhost 2222 <<EOF
+myfunc1  44
+myfunc2  44
+myfunc3  99
+myfunc1  99
+EOF

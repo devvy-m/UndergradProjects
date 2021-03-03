@@ -1,0 +1,34 @@
+Write a python program that implements a small server using 
+
+    socketserver.ThreadingTCPServe
+
+The program should be run this way:
+
+    python3 p5.py  PN
+
+where PN is a port number to accept connections on.
+
+The program should interact correctly with the P5CLI.py client.
+It should receive messages of this type:
+
+    myfunc1 44
+
+Where myfunc1 is the name of a function to be invoked, and 44 is an integer
+argument to pass to the function.  All functions will be assumed to accept
+a single integer argument and to return a single integer value.  All functions
+will be dynamically loadable from this library:
+
+    /nfshome/rbutler/public/courses/py/p5testfiles/libp5.so
+
+You should print out the function name, the input value, and the return value.
+So, if myfunc1 adds one to the input to produce the output, you would print:
+
+    myfunc1 44 45
+
+Also, the program should send correct replies to the client provided.
+
+Use the ctypes module to load the requested functions and invoke them.
+If an invocation fails (e.g. the function does not exist), then print an error
+msg, e.g.:
+
+    ** failed: myfunc1 44
