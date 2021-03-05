@@ -15,11 +15,9 @@ body{
   flex: 10%;
   padding: 20px;
   text-align: right;
-  /* background-color: cornsilk; */
 }
 .main{
   flex: 70%;
-  /* padding: 20px; */
 }
 .button-box{
   width: 100%;

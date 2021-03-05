@@ -1,72 +1,21 @@
-
-                           (Advanced) Web Technologies
-                                  Spring 2020
-                                   Project 4
-
-
-turnin code:  awt_p4
-
-
-For this project develop a single webpage named p4.html.
-
-
-p4.html (webworkers / threads) --------
-
-    Use webworkers to examine a range of integers *inclusive*.
-    For each integer, compute its square root and then determine if the
-    first digit after the decimal point is 7.
+A single webpage using webworkers to examine a range of integers(inclusive).
+The square root of each integer is calculated. If the first digit after the 
+decimal point is 7, the integer is included in the total count.
     For example:
         127.677  # would NOT be counted
         123.766  # would be counted ****
 
-    Converting to a string and looking at the first char after . is probably
-    an un-acceptably slow way to examine each one; use a little arithmetic.
 
-    The interface should present the user with a "number" box that will only
-    accept values in the range from 1 to 4; this will be used to indicate
-    the number of threads that should be used to compute the result.  Note
-    that the "main" thread of the browser does not participate in computing
-    the result; it will merely display the result at the end.
+The UI allows the user to input values in the range from 1 to 4 which 
+represents the number of threads that should be used to compute the result.  
+The "main" thread does not participate in computing
+the result.When computation is complete, information about
+the results and the threads involved in the computation is printed out.
+Example:
+    2 threads compute range: 111000 999000
+    Output
+        THREAD1: 44455     
+        THREAD2: 44323
+        TOTAL:  88778     
+        TIME 12.345678    
 
-    Below that box, there should be a pair of boxes into which we can type
-    the low and high range of values to be examined.  These numbers are
-    permitted to be large, e.g. 9 billion (9000000000), although you can
-    assume that the range will be small enough to compute in a few seconds.
-    The numbers will be >= 0.
-
-    Provide a start button that the user can click when the above values
-    have been entered.
-
-    Finally, when the computation is complete, display information about
-    the results and which threads computed them.  For example, if 2 threads
-    compute this range:
-        111000 999000
-    the correct output format would be:
-        THREAD: 44455     // <-- no need to identify which thread
-        THREAD: 44323
-        TOTAL:  88778     // <-- total of all the above
-        TIME 12.345678    // <-- NOTE: this is a fake time I just made up
-
-    An easy way to get the diff in two times might be something like this:
-        t1 = new Date();
-        // do some work
-        t2 = new Date();
-        console.log( t2-t1 );         // displays in milliseconds
-        console.log( (t2-t1)/1000 );  // displays in seconds
-
-
-Use turnin to submit a tar file containing all files for the project.
-
-p4 will be graded on www.cs.mtsu.edu in this manner:
-    python3 -m http.server --cgi 5994 &
-        ## where 5994 is a port that may change; I will choose the port
-        ##   number AT THE TIME OF TESTING
-
-    in chrome on another computer, visit:
-        http://www.cs.mtsu.edu:5994    ## 5994 chgd to same port as above
-
-    When I visit that URL, there should be a file there named p4.html
-    which I will select to load into the browser.
-
-
-/////

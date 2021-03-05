@@ -1,7 +1,6 @@
 #lang racket
 
-; Devon Layton, CSCI 3210
-; Project 4, Due: 03/02/2020
+; Author: Devon Layton
 ; This program will demonstrate the use of the functional programming language Scheme
 ; Only functional features of the language will be used
 

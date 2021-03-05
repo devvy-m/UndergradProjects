@@ -1,0 +1,19 @@
+Go program to calculate student final letter grades as well as
+the average and highest scores of CLA, OLA, quizzes, exams, and final exam scores, respectively. 
+The final result should be printed to the screen (standard output).
+
+•	At the beginning of the program, prompt user for the name of the data 
+        file which contains the records of student grades.
+•	Class Student,  includes student id, scores for CLA,
+		OLA, quizzes, exams, final scores, total points, and letter
+		grade. Member data is private and contains a 
+		function to calculate the final letter grade.
+•	Class Roster, has an associative array to store all Student
+		objects. Provides appropriate methods to calculate, update,
+		and query individual student information as well as required statistic information
+		of all students.
+•	Program allows users to perform two queries. For each query, the user inputs C#,
+		and prints all information (including his/her final
+		letter grade) of the student with the given C#. After two queries, the program
+		prints information for all students as well as the average and highest scores of CLA,
+		OLA, quizzes, exams, and final exam.

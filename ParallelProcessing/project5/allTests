@@ -1,0 +1,49 @@
+#!/bin/sh
+
+#test1
+echo
+echo  "~ 16 secs"
+echo  "1 27.25   5295 0.00999"
+echo
+
+/usr/bin/time -p  mpiexec -n 2  ./p5 500 600 100 100 100 400 0.01
+
+echo
+echo  "~ 4 secs"
+echo  "1 27.25   5295 0.00999"
+echo
+
+/usr/bin/time -p  mpiexec -n 5  ./p5 500 600 100 100 100 400 0.01
+
+echo
+
+# test 2
+echo
+echo  "~ 16 30 secs"
+echo  "1 27.25   10661 0.00499"
+echo
+
+/usr/bin/time -p  mpiexec -n 2  ./p5 500 600 100 100 100 400 0.005
+
+echo
+echo  "~ 4 secs"
+echo  "1 27.25   10661 0.00499"
+echo
+
+/usr/bin/time -p  mpiexec -n 5  ./p5 500 600 100 100 100 400 0.005
+
+echo
+
+#test3
+echo
+echo  "5 separate hosts for just 1 run"
+echo  "~ 10 secs"
+echo  "1 27.25   5295 0.00999"
+echo
+
+/usr/bin/time -p  mpiexec -f ~/beowulf_hosts -n 5  ./p5 500 600 100 100 100 400 0.01
+
+echo
+pwd
+echo
+

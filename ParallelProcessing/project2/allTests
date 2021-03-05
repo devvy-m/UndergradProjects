@@ -1,0 +1,87 @@
+#!/bin/sh
+
+# test 1
+killall p2
+
+echo
+echo killall p2
+echo   "   1  24.994446"
+echo   "3234   0.014984"
+echo
+echo   "2 secs"
+echo
+echo "--------------------------- 8 threads -----------------------------"
+echo
+/usr/bin/time -p  ./p2  1500 3000 100 100 100 400 0.015  8
+echo
+
+#test2
+
+echo
+killall p2
+echo   "   1  24.994446"
+echo   "3234   0.014984"
+echo
+echo   "3 secs"
+echo
+echo "--------------------------- 4 threads -----------------------------"
+echo
+/usr/bin/time -p  ./p2  1500 3000 100 100 100 400 0.015  4
+echo
+
+#test3
+
+echo
+killall p2
+echo   "   1  24.994446"
+echo   "3234   0.014984"
+echo
+echo   "6 secs"
+echo
+echo "--------------------------- 2 threads -----------------------------"
+echo
+/usr/bin/time -p  ./p2  1500 3000 100 100 100 400 0.015  2
+echo
+
+#test4
+
+echo
+killall p2
+echo   "   1  24.994446"
+echo   "3234   0.014984"
+echo
+echo   "10.7 secs"
+echo
+echo "--------------------------- 1 threads -----------------------------"
+echo
+/usr/bin/time -p  ./p2  1500 3000 100 100 100 400 0.015  1
+echo
+
+#test5
+echo
+killall p2
+echo   "   1  26.174957"
+echo   "3387   0.014984"
+echo
+echo   "16 secs"
+echo
+echo "--------------------------- 1 threads -----------------------------"
+echo
+/usr/bin/time -p  ./p2  2100 3200 100 100 100 400 0.015  1
+echo
+
+#test6
+
+echo
+killall p2
+echo   "   1  24.994446"
+echo   "3234   0.014984"
+echo
+echo   "1 secs"
+echo
+echo "--------------------------- 16 threads -----------------------------"
+echo
+/usr/bin/time -p  ./p2  1500 3000 100 100 100 400 0.015 16
+echo
+pwd
+echo

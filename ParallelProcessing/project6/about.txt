@@ -1,0 +1,32 @@
+C program that uses  CUDA  on c00 to solve the problem described below.
+
+This program will perform as a single layer of neurons in a neural network.
+There will be:
+    a 1-D vector of input values
+    a 2-D array of weights
+Your program should produce the 1-D vector of output values and print them
+UNLESS the -t cmd-line flag is specified (below).
+
+The input will come from a file specified as the first command-line argument.
+The second command-line arg is optional; if present, it will be  -t  and means
+to just print the final total line (below) and NOT print all output values.
+
+If there is a # on any input line, the # and everything after it is a comment.
+The amount of white space between data items on a line is arbitrary (not fixed).
+Example:
+     input:
+        4 3                   # number of inputs and neurons
+        1.5  1.8  2.4  8.1    # all inputs on a single line
+        0.5  0.1  0.2         # weights from first  input (to each neuron); single line
+        0.4  0.1  0.2         # weights from second input (to each neuron); single line
+        0.3  0.1  0.2         # weights from third  input (to each neuron); single line
+        0.2  0.1  0.2         # weights from fourth input (to each neuron); single line
+     output:
+        0  0.978332
+        1  0.798991
+        2  0.940476
+        total 2.717798
+
+To run the program, type commands like:
+
+    ./p6 some_input_filename    ## and -t may also be specified after the filename

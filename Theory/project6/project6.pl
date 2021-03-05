@@ -1,5 +1,4 @@
-% Devon Layton, CSCI 3210
-% Project6, Due: 04/14/20
+% Author: Devon Layton
 
 % This program will demonstrate the use of the logical programming language Prolog
 % Only built-in functions covered in class may be used, given predicate formats must be used,

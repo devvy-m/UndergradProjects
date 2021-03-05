@@ -1,44 +1,6 @@
-(Advanced) Web Technologies
-                                  Spring 2020
-                                   Project 5
+A web page representing a dart board game. When "Run!" button is pressed, 
+all darts are thrown at random locations on the board.
 
-
-turnin code:  awt_p5
-
-
-Like the demo given in class, create a web page with a number value
-that represents the size of a *square* canvas (webgl 2D) to be created.
-The size should range between 300 and 900, inclusive, in increments
-of 100.  The default value should be 500.  Also, provide a number
-value that represents the number of darts to throw at the canvas.
-Max/min/incr/default values for this field should be same as the size
-field.  Both fields should have a corresponding label to make it easy
-to tell them apart.
-
-There should be a button labeled "Run!".  When pressed, it should cause
-the canvas to be sized, the square and circle drawn, and all darts thrown
-at random locations on the canvas.
-
-The areas inside and outside the circle should be different colors.  Also,
-the color for the darts should differ from those used for the square
-and circle.  Also, the darts inside the circle should be a different
-color from those outside the circle.  Any dart on the circle should be
-counted as inside.
-
-Print a value a few lines below the canvas (not on the canvas) that
-shows the computation of a value for PI based on the ratio of darts in
-and out of the circle, as discussed in class.
-
-
-Use turnin to submit a tar file containing all files for the project.
-
-p5 will be graded on www.cs.mtsu.edu in this manner:
-    python3 -m http.server --cgi 5994 &   
-        ## where 5994 is a port that may change; I will choose the port
-        ##   number AT THE TIME OF TESTING
-
-    in chrome on another computer, visit:
-        http://www.cs.mtsu.edu:5994    ## 5994 chgd to same port as above
-
-    When I visit that URL, there should be a file there named p5.html
-    which I will select to load into the browser.
+Output:
+    computation of a value for PI based on the ratio of darts in
+and out of the circle.

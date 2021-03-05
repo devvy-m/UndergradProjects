@@ -1,0 +1,7 @@
+	This project will use javascript in addition to html5 and css to build 
+	a single-page application (SPA).
+
+	to run:
+	    python3 -m http.server --cgi 3000 &
+	visit:
+		http://localhost:3000/p2.html

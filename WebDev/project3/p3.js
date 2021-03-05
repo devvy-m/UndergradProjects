@@ -14,9 +14,8 @@ function initiate() {
   var button3 = document.getElementById("counts");
   button3.addEventListener("click", send);
 
-  socket = new WebSocket("ws://localhost:5940");
+  socket = new WebSocket("http://localhost:3000");
 
-  // socket = new WebSocket("ws://www.cs.mtsu.edu:5940");
   socket.addEventListener("open", opened);
   socket.addEventListener("message", received);
 }

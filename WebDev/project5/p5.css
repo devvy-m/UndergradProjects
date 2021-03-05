@@ -21,18 +21,15 @@
  
   .buttonbox{
     flex:10%;
-    /* padding: 20px; */
   }
   #databox{
     display: inline-grid;
     padding-top: 20px;
     white-space: pre-wrap;
-    /* width: 200px; */
-    /* border: 1px solid black; */
+
   }
   #canvasbox{
     float: left;
-    /* padding: 10px; */
     margin: 10px;
   }
   #pibox{

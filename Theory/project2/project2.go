@@ -1,28 +1,4 @@
-// Devon Layton
-// CSCI 3210
-// Project 2
-// Due: 04/20/2020
-
-// write a program to calculate student final letter grades as well as
-// the average and highest scores of CLA, OLA, quizzes, exams, and final exam scores, respectively. The final result should be printed to the screen (standard output).
-
-//•	At the beginning of the program, your program should give the user
-//		a prompt for the name of the data file which contains the records
-//		of student grades.
-//•	Define a class Student, which includes student id, scores for CLA,
-//		OLA, quizzes, exams, final scores, total points, and letter
-//		grade. All member data must be private. The class must provide
-//		a function to calculate the final letter grade.
-//•	Define a class Roster, which has an associative array (other similar
-//		data structures like map, hash map are also fine) to store all Student
-//		objects. Define appropriate methods in the class to calculate, update,
-//		and query individual student information as well as required statistic information
-//		of all students.
-//•	Your program should allow users to perform two queries. For each query, the user inputs C#,
-//		and your program should print all information (including his/her final
-//		letter grade) of the student with the given C#. After two queries, your program
-//		print information of all students as well as the average and highest scores of CLA,
-//		OLA, quizzes, exams, and final exam on the screen.
+//Author: Devon Layton
 
 // -- Go does not have any classes but you can define methods of types
 package main

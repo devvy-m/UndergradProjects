@@ -1,5 +1,3 @@
-// Author: Devon Layton
-// Project 1 parallel processing
 // The file named hotplate_problem.txt describes the hotplate problem.
 // Write a sequential C program to solve the problem, meeting the criteria
 // described below.  The algorithms in this program will form the basis

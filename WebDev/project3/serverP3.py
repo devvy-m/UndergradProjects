@@ -46,8 +46,7 @@ async def handle_connection(ws, path):
             await ws.send("I don't understand")
         print("replied to",charMsg)
 
-# start_server = websockets.serve(handle_connection, 'www.cs.mtsu.edu', 5940)
-start_server = websockets.serve(handle_connection, "localhost", 5940)
+start_server = websockets.serve(handle_connection, "localhost", 3000)
 print("SERVER STARTED")
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
