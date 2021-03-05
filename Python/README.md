@@ -1,4 +1,4 @@
-## A collection of python programs in different languages written for CSCI 3210-Theory 
+## A collection of python programs in different languages written for CSCI 3280 -Python
 ### Project Descriptions
    - Project 1: Program calculates a value of pi for when a dart is thrown at a dart board
         - dart_game.py: GUI for game using tkinter
